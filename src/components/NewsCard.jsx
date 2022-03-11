@@ -8,9 +8,10 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import newstemp from '../news-template.jpg';
 import { makeStyles } from '@mui/styles';
+import classNames from 'classnames';
 
 const useStyles = makeStyles((theme) => ({
   border: {
@@ -51,11 +52,34 @@ const useStyles = makeStyles((theme) => ({
 const NewsCard = ({
   content: { description, publishedAt, source, title, url, urlToImage },
   i,
+  activeArticle,
 }) => {
   const classes = useStyles();
+  const [elRefs, setElRefs] = useState([]);
+  const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
+
+  useEffect(() => {
+    setElRefs((refs) =>
+      Array(20)
+        .fill()
+        .map((_, j) => refs[j] || createRef())
+    );
+  }, []);
+
+  useEffect(() => {
+    if (i === activeArticle && elRefs[activeArticle]) {
+      scrollToRef(elRefs[activeArticle]);
+    }
+  }, [i, activeArticle, elRefs]);
 
   return (
-    <Card className={classes.card}>
+    <Card
+      ref={elRefs[i]}
+      className={classNames(
+        classes.card,
+        activeArticle === i ? classes.activeCard : null
+      )}
+    >
       <CardHeader
         className={classes.cardHeader}
         title={source.name}

@@ -1,7 +1,9 @@
 import { createTheme } from '@mui/material';
 
-const colorprimary = '#3b3b3b';
+const colorprimary = '#20272F';
 const colorsecondary = '#000000';
+const color1 = '#2fb45a';
+const color2 = '#47ff82'
 
 const theme = createTheme({
   palette: {
@@ -10,6 +12,10 @@ const theme = createTheme({
     },
     secondary: {
       main: colorsecondary,
+    },
+    common: {
+      logotext: color1,
+      logotext2: color2,
     },
   },
   typography: {

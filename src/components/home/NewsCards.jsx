@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 25,
     color: 'white',
     marginBottom: 'auto',
+    marginTop: '1rem',
   },
   infoCard: {
     display: 'flex',
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewsCards = ({ articles }) => {
+const NewsCards = ({ articles, activeArticle }) => {
   const classes = useStyles();
 
   const infoCards = [
@@ -98,7 +99,7 @@ const NewsCards = ({ articles }) => {
       </Grow>
     );
   }
-  console.log(articles);
+
   return (
     <Grow in>
       <Grid className={classes.container} container spacing={1}>
@@ -112,7 +113,7 @@ const NewsCards = ({ articles }) => {
             xl={2}
             style={{ display: 'flex' }}
           >
-            <NewsCard content={article} i={i} />
+            <NewsCard content={article} activeArticle={activeArticle} i={i} />
           </Grid>
         ))}
       </Grid>
