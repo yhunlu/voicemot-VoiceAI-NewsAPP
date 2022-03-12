@@ -2,6 +2,7 @@ import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import logo from '../../favicon.png';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   logoContainer: {

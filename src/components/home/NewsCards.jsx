@@ -1,4 +1,4 @@
-import { Grid, Grow, Typography } from '@mui/material';
+import { Box, Grid, Grow, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import NewsCard from '../NewsCard';
@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     textAlign: 'center',
-  },
-  title: {
-    ...theme.typography.h5,
   },
 }));
 
@@ -76,11 +73,24 @@ const NewsCards = ({ articles, activeArticle }) => {
               lg={3}
               className={classes.infoCard}
             >
-              <div
+              {/* <div
                 className={classes.card}
                 style={{ backgroundColor: infoCard.color }}
+              > */}
+              <Box
+                sx={{
+                  boxShadow: 10,
+                  width: 'auto',
+                  height: 'auto',
+                  p: 2,
+                  m: 1,
+                  borderRadius: 10,
+                  textAlign: 'center',
+                  fontSize: '0.875rem',
+                  fontWeight: '700',
+                }}
               >
-                <Typography variant="h5" component="h5">
+                <Typography variant="h4" component="h4">
                   {infoCard.title}
                 </Typography>
                 {infoCard.info ? (
@@ -89,10 +99,11 @@ const NewsCards = ({ articles, activeArticle }) => {
                     {infoCard.info}
                   </Typography>
                 ) : null}
-                <Typography variant="h6" component="h6">
+                <Typography variant="h4" component="h4">
                   Try saying: <br /> <i>{infoCard.text}</i>
                 </Typography>
-              </div>
+              </Box>
+              {/* </div> */}
             </Grid>
           ))}
         </Grid>
